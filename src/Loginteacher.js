@@ -36,11 +36,11 @@ function Loginparent({navigation}) {
       <View style={styles.Box}>
         <Image
           style={styles.img}
-          
-          source={require("../assets/parent.png")}
+          resizeMode='contain'
+          source={require("../assets/teacher.png")}
         />
       </View>
-      <Text style={styles.head}>Login as a parent</Text>
+      <Text style={styles.head}>Login as a teacher</Text>
       <View style={styles.inpbox}>
       <TextInput
         style={styles.input}

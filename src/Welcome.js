@@ -1,12 +1,12 @@
 import React from 'react';
-import Loginparent from './Loginparent';
-import {Button, View,StyleSheet,Text,Platform,StatusBar,SafeAreaView,Image} from 'react-native';
+
+import {Button, View,StyleSheet,Text,Platform,StatusBar,SafeAreaView,Image,TouchableOpacity} from 'react-native';
 import { useFonts,   Poppins_800ExtraBold,
     Poppins_100Thin,
     Poppins_500Medium,
     } from  '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
-function Welcome(props) {
+function Welcome({navigation}) {
     let [fontsLoaded] = useFonts({
         Poppins_800ExtraBold,
         Poppins_500Medium,
@@ -21,16 +21,15 @@ function Welcome(props) {
        <SafeAreaView style={styles.maincontainer} > 
        
        <Text style={styles.head}>Login as</Text>
-    
-           <View style={styles.container}>
-              <Image style={styles.img} resizeMode='center' source={require('../assets/parent.png')}/>
+           <TouchableOpacity style={styles.container} onPress={()=>navigation.navigate('Loginp')}>
+              <Image style={styles.img} resizeMode='center' source={require('../assets/parent1.png')}/>
                <Text style={styles.txt}>A parent</Text>
-               </View>
+               </TouchableOpacity>
             
-           <View style={styles.containerr}>
+           <TouchableOpacity style={styles.containerr} onPress={()=>navigation.navigate('Logint')}>
            <Image style={styles.img} resizeMode='center' source={require('../assets/teacher.png')}/>
                <Text style={styles.txt}>A Teacher</Text>
-           </View>
+           </TouchableOpacity>
        </SafeAreaView> 
     );
 }
@@ -57,6 +56,7 @@ const styles=StyleSheet.create({
         backgroundColor: '#fff',
         elevation: 5,
         shadowColor: '#000000',
+        borderRadius: 20,
            
         
    
@@ -66,7 +66,7 @@ const styles=StyleSheet.create({
         width: '60%',
         backgroundColor: '#fff',
         shadowColor: '#000000',
-           
+        borderRadius: 20,
          elevation: 5,
          
     },

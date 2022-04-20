@@ -1,30 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { useFonts,   Poppins_800ExtraBold, } from  '@expo-google-fonts/poppins';
-import AppLoading from 'expo-app-loading';
+import Loginparent from './src/Loginparent';
+import Loginteacher from './src/Loginteacher';
 import Welcome from './src/Welcome';
-export default function App() {
-  let [fontsLoaded] = useFonts({
-     Poppins_800ExtraBold,
-  });
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+const Stack = createNativeStackNavigator();
+export default function App() {
   return (
-    <View style={styles.container}>
-      <Welcome/>
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator initialRouteName="Welcome">
+      
+      
+      <Stack.Screen name="Welcome" 
+      component={Welcome} 
+      options={{
+        headerShown: false,
+      }}
+      />
+      <Stack.Screen name='Loginp' component={Loginparent}
+      options={{
+        headerShown: false,
+      }}
+      />
+      <Stack.Screen name='Logint' component={Loginteacher}
+      options={{
+        headerShown: false,
+      }}
+      />
+      
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontFamily: 'Poppins_800ExtraBold',
-    fontSize: 40,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
