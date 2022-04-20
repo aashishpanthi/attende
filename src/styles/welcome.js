@@ -1,17 +1,18 @@
 import { StyleSheet, Platform, StatusBar } from "react-native";
+import colors from "../../config/colors";
 
 const styles = StyleSheet.create({
   container: {
     height: 200,
     width: 200,
     borderRadius: 25,
-    backgroundColor: "#fff",
-    shadowColor: "#666",
+    backgroundColor: colors.white,
+    shadowColor: colors.shadow,
     elevation: 25,
   },
   head: {
     fontSize: 48,
-    color: "#222F5B",
+    color: colors.primary,
     fontFamily: "Poppins_800ExtraBold",
   },
   img: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   txt: {
     textAlign: "center",
     fontFamily: "Poppins_500Medium",
-    color: "#222F5B",
+    color: colors.primary,
     fontSize: 20,
     marginTop: 8,
   },

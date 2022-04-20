@@ -1,15 +1,16 @@
 import { StatusBar, StyleSheet, Platform } from "react-native";
+import colors from "../../config/colors";
 
 const styles = StyleSheet.create({
   container: {
     height: "100%",
     width: "100%",
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
   },
   Box: {
     height: "41%",
     width: "100%",
-    backgroundColor: "#F2F2F2",
+    backgroundColor: colors.loginBackground,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   inpbox: {
@@ -27,12 +28,12 @@ const styles = StyleSheet.create({
     fontSize: 35,
     textAlign: "center",
     marginTop: "7%",
-    color: "#212E5B",
+    color: colors.primary,
   },
   input: {
     borderBottomColor: "red",
-    backgroundColor: "#F2F2F2",
-    color: "#212E5B",
+    backgroundColor: colors.loginBackground,
+    color: colors.primary,
     padding: 10,
     paddingLeft: 25,
     borderRadius: 40,
@@ -48,14 +49,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 125,
     borderRadius: 40,
     elevation: 3,
-    backgroundColor: "#212E5B",
+    backgroundColor: colors.primary,
   },
   btn: {
-    color: "#fff",
+    color: colors.white,
     fontFamily: "Poppins_500Medium",
   },
   forgot: {
-    color: "#212E5B",
+    color: colors.primary,
     fontFamily: "Poppins_500Medium",
     fontSize: 15,
     marginTop: "5%",
