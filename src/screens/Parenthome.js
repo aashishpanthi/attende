@@ -149,7 +149,9 @@ import {
   
     navinfo: {
       fontFamily: "Poppins_500Medium",
-      fontSize: 20, 
+      fontSize: 15, 
+      marginRight:'20%',
+      marginTop:'1%'
     },
     icon: {
       height: 30,
@@ -158,8 +160,8 @@ import {
       
     },
     iconarr:{
-      height: 30,
-      width: 30,
+      height: 20,
+      width: 20,
    
       
     },
