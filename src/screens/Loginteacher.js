@@ -19,7 +19,7 @@ function Loginparent({ navigation }) {
     return <AppLoading />;
   }
 
-  return <Login navigation={navigation} role="teacher" />;
+  return <Login navigation={navigation}  role="teacher" navv="Teacherhome"/>;
 }
 
 export default Loginparent;

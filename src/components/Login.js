@@ -10,7 +10,7 @@ import {
 
 import styles from "../styles/login";
 
-function Login({ navigation, role }) {
+function Login({ navigation, role,navv }) {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
 
@@ -48,7 +48,7 @@ function Login({ navigation, role }) {
         />
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate("Welcome")}
+          onPress={() => navigation.navigate(navv)}
         >
           <Text style={styles.btn}>Sign in</Text>
         </Pressable>

@@ -1,16 +1,60 @@
-import { StyleSheet, Text, View } from "react-native";
+import  { useState, useEffect } from 'react';
 import Loginparent from "./src/screens/Loginparent";
 import Loginteacher from "./src/screens/Loginteacher";
 import Welcome from "./src/screens/Welcome";
+
+import Teacherhome from './src/screens/Teacherhome';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import Takeattendance from "./src/components/Takeattendance";
+import Parenthome from './src/screens/Parenthome';
+import {
+  useFonts,
+  Poppins_800ExtraBold,
+  Poppins_100Thin,
+  Poppins_500Medium,
+} from "@expo-google-fonts/poppins";
+import AppLoading from "expo-app-loading";
 const Stack = createNativeStackNavigator();
 export default function App() {
+  const [date, setDate] = useState(null);
+  useEffect(() => {
+    let today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    setDate(date);
+  }, []);
+  let [fontsLoaded] = useFonts({
+    Poppins_800ExtraBold,
+    Poppins_500Medium,
+    Poppins_100Thin,
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen
+          name="Attendance"
+          component={Takeattendance}
+          options={{
+            title: "Attendance : "+date,
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "black",
+            headerTitleStyle: {
+              fontFamily: "Poppins_500Medium",
+              fontSize:20,
+            },
+          }}
+        />
+         <Stack.Screen
           name="Welcome"
           component={Welcome}
           options={{
@@ -27,6 +71,20 @@ export default function App() {
         <Stack.Screen
           name="Logint"
           component={Loginteacher}
+          options={{
+            headerShown: false,
+          }}
+        />
+         <Stack.Screen
+          name="Teacherhome"
+          component={Teacherhome}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Parenthome"
+          component={Parenthome}
           options={{
             headerShown: false,
           }}
