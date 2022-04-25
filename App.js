@@ -2,7 +2,7 @@ import  { useState, useEffect } from 'react';
 import Loginparent from "./src/screens/Loginparent";
 import Loginteacher from "./src/screens/Loginteacher";
 import Welcome from "./src/screens/Welcome";
-
+import colors from "./config/colors";
 import Teacherhome from './src/screens/Teacherhome';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -45,7 +45,7 @@ export default function App() {
           options={{
             title: "Attendance : "+date,
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: colors.navbar,
             },
             headerTintColor: "black",
             headerTitleStyle: {

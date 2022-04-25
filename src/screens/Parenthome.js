@@ -28,17 +28,38 @@ import {
     return (
       <View style={styles.main}>
         <View style={styles.container}>
-          <View style={styles.imgcontainer}>
-            <Image
-              style={styles.img}
-              source={require("../../assets/profile.png")}
-            />
+        <View style={styles.infobox}>
+            <View style={styles.imgbox}>
+                <View style={styles.imgwrap}>
+        <Image
+            style={styles.img}
+            source={require("../../assets/profile.png")}
+          />
+           </View>
           </View>
-          <View style={styles.txtcontainer}>
-            <Text style={styles.txt}>Aashish Panthi</Text>
+          <View style={styles.basic}>
+              <Text style={styles.name}>Aashish Panthi</Text>
+              <Text style={styles.address}>Butwal-10 Rupandehi</Text>
+          </View>
+          <View style={styles.datawrap}>
+              <View style={styles.data}>
+                  <Text style={styles.head}>Class</Text>
+                  <Text style={styles.no}>11</Text>
+              </View>
+              <View style={styles.data}>
+                  <Text style={styles.head}>Roll No.</Text>
+                  <Text style={styles.no}>37</Text>
+              </View>
+              <View style={styles.data}>
+                  <Text style={styles.head}>Section</Text>
+                  <Text style={styles.no}>T</Text>
+              </View>
+
           </View>
         </View>
-        
+
+        </View>
+        <View style={styles.navcontainer}>
         <TouchableNativeFeedback
           style={styles.btn}
           onPress={() => navigation.navigate("Attendance")}
@@ -71,6 +92,23 @@ import {
             />
           </View>
         </TouchableNativeFeedback>
+        <TouchableNativeFeedback
+          style={styles.btn}
+          onPress={() => navigation.navigate("Attendance")}
+        >
+          <View style={styles.nav}>
+            <Image
+              style={styles.icon}
+              source={require("../../assets/appeal.png")}
+            />
+            <Text style={styles.navinfo}>Appeal Leave          </Text>
+            <Image
+              style={styles.iconarr}
+              source={require("../../assets/arrow.png")}
+            />
+          </View>
+        </TouchableNativeFeedback>
+        </View>
       </View>
     );
   }
@@ -84,28 +122,22 @@ import {
       height: "30%",
       backgroundColor: colors.parentHome,
       paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-      borderBottomLeftRadius: 40,
-      borderBottomRightRadius: 40,
+      alignItems:'center'
+
     },
-    imgcontainer: {
-      width: "100%",
-  
-      alignItems: "center",
+    infobox:{
+       
+        width:'80%',
+        position:'absolute',
+        height:'100%',
+        backgroundColor:'#fff',
+        marginTop:'25%',
+        elevation: 10,
+        opacity:.9,
     },
-    img: {
-      marginTop: "10%",
-      height: 80,
-      width: 80,
-    },
-    txtcontainer: {
-      marginTop: "5%",
-      width: "100%",
-      alignItems: "center",
-    },
-    txt: {
-      fontSize: 25,
-      fontFamily: "Poppins_800ExtraBold",
-      color: "#fff",
+    navcontainer:{
+        marginTop:'25%',
+
     },
     nav: {
       marginTop: "5%",
@@ -131,6 +163,55 @@ import {
    
       
     },
+    imgbox:{
+        
+        alignItems:'center',
+        marginTop:'-15%',
+        elevation:10,
+        
+    },
+    img:{
+        height:80,
+        width:80,
+    },
+    imgwrap:{
+        height:81,
+        width:81,
+        backgroundColor:'#fff',
+        borderRadius: 100,
+        elevation:10,
+    },
+    basic:{
+        marginTop:10,
+        alignItems:"center",
+    },
+    name:{
+        fontSize:25,
+       fontFamily:'Poppins_800ExtraBold',
     
+        
+    },
+    address:{
+     fontFamily:'Poppins_500Medium',
+     fontSize:15,
+     color:colors.primary,
+    },
+    datawrap:{
+        marginTop:'10%',
+        flexDirection:'row',
+        justifyContent:'space-around',
+    },
+    data:{
+        alignItems:'center',
+    },
+    head:{
+        fontFamily:'Poppins_500Medium',
+        color: colors.black,
+    },
+    no:{
+        fontFamily:'Poppins_500Medium'
+    }
+
+      
   });
   

@@ -117,8 +117,7 @@ const styles = StyleSheet.create({
     height: "30%",
     backgroundColor: colors.parentHome,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
+   
   },
   imgcontainer: {
     width: "100%",
