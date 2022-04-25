@@ -210,9 +210,11 @@ import {
     head:{
         fontFamily:'Poppins_500Medium',
         color: colors.black,
+        opacity:0.5,
     },
     no:{
-        fontFamily:'Poppins_500Medium'
+        fontFamily:'Poppins_500Medium',
+        opacity:0.5,
     }
 
       
