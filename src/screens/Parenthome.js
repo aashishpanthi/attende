@@ -162,6 +162,7 @@ import {
     iconarr:{
       height: 20,
       width: 20,
+      marginTop:'1%',
    
       
     },
