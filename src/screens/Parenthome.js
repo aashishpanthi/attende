@@ -133,6 +133,7 @@ import {
         backgroundColor:'#fff',
         marginTop:'25%',
         elevation: 10,
+        shadowColor:'#0991F6',
         opacity:.9,
     },
     navcontainer:{
@@ -183,6 +184,7 @@ import {
         backgroundColor:'#fff',
         borderRadius: 100,
         elevation:10,
+        shadowColor:'black',
     },
     basic:{
         marginTop:10,
