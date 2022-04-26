@@ -135,6 +135,7 @@ import {
         elevation: 10,
         shadowColor:'#0991F6',
         opacity:.9,
+        borderRadius:10,
     },
     navcontainer:{
         marginTop:'25%',

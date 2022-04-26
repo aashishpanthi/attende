@@ -16,7 +16,7 @@ import {
   Poppins_500Medium,
 } from "@expo-google-fonts/poppins";
 import AppLoading from "expo-app-loading";
-export default function Teacherhome({ navigation }) {
+export default function Parenthome({ navigation }) {
   let [fontsLoaded] = useFonts({
     Poppins_800ExtraBold,
     Poppins_500Medium,
@@ -28,16 +28,24 @@ export default function Teacherhome({ navigation }) {
   return (
     <View style={styles.main}>
       <View style={styles.container}>
-        <View style={styles.imgcontainer}>
-          <Image
-            style={styles.img}
-            source={require("../../assets/profile.png")}
-          />
+      <View style={styles.infobox}>
+          <View style={styles.imgbox}>
+              <View style={styles.imgwrap}>
+      <Image
+          style={styles.img}
+          source={require("../../assets/profile.png")}
+        />
+         </View>
         </View>
-        <View style={styles.txtcontainer}>
-          <Text style={styles.txt}>Welcome, Roshan</Text>
+        <View style={styles.basic}>
+            <Text style={styles.name}>Roshan Acharya</Text>
+            <Text style={styles.address}>Kalika ManavGyan S.S</Text>
         </View>
+        
       </View>
+
+      </View>
+      <View style={styles.navcontainer}>
       <TouchableNativeFeedback
         style={styles.btn}
         onPress={() => navigation.navigate("Attendance")}
@@ -104,6 +112,25 @@ export default function Teacherhome({ navigation }) {
           
         </View>
       </TouchableNativeFeedback>
+      <TouchableNativeFeedback
+        style={styles.btn}
+        onPress={() => navigation.navigate("Attendance")}
+      >
+        <View style={styles.nav}>
+          <Image
+            style={styles.icon}
+            source={require("../../assets/ereader.png")}
+          />
+          <Text style={styles.navinfo}>Leave appeal     </Text>
+          
+          <Image
+            style={styles.iconarr}
+            source={require("../../assets/arrow.png")}
+          />
+          
+        </View>
+      </TouchableNativeFeedback>
+      </View>
     </View>
   );
 }
@@ -117,27 +144,24 @@ const styles = StyleSheet.create({
     height: "30%",
     backgroundColor: colors.parentHome,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-   
-  },
-  imgcontainer: {
-    width: "100%",
+    alignItems:'center'
 
-    alignItems: "center",
   },
-  img: {
-    marginTop: "10%",
-    height: 80,
-    width: 80,
+  infobox:{
+     
+      width:'80%',
+      position:'absolute',
+      height:'70%',
+      backgroundColor:'#fff',
+      marginTop:'35%',
+      elevation: 10,
+      shadowColor:'#0991F6',
+      opacity:.9,
+      borderRadius:10,
   },
-  txtcontainer: {
-    marginTop: "5%",
-    width: "100%",
-    alignItems: "center",
-  },
-  txt: {
-    fontSize: 25,
-    fontFamily: "Poppins_800ExtraBold",
-    color: "#fff",
+  navcontainer:{
+      marginTop:'25%',
+
   },
   nav: {
     marginTop: "5%",
@@ -149,7 +173,9 @@ const styles = StyleSheet.create({
 
   navinfo: {
     fontFamily: "Poppins_500Medium",
-    fontSize: 20, 
+    fontSize: 15, 
+    marginRight:'20%',
+    marginTop:'1%'
   },
   icon: {
     height: 30,
@@ -158,10 +184,63 @@ const styles = StyleSheet.create({
     
   },
   iconarr:{
-    height: 30,
-    width: 30,
+    height: 20,
+    width: 20,
+    marginTop:'1%',
  
     
   },
+  imgbox:{
+      
+      alignItems:'center',
+      marginTop:'-15%',
+      elevation:10,
+      
+  },
+  img:{
+      height:80,
+      width:80,
+  },
+  imgwrap:{
+      height:80,
+      width:80,
+      backgroundColor:'#fff',
+      borderRadius: 100,
+      elevation:10,
+      shadowColor:'black',
+  },
+  basic:{
+      marginTop:10,
+      alignItems:"center",
+  },
+  name:{
+      fontSize:25,
+     fontFamily:'Poppins_800ExtraBold',
   
+      
+  },
+  address:{
+   fontFamily:'Poppins_500Medium',
+   fontSize:15,
+   color:colors.primary,
+  },
+  datawrap:{
+      marginTop:'10%',
+      flexDirection:'row',
+      justifyContent:'space-around',
+  },
+  data:{
+      alignItems:'center',
+  },
+  head:{
+      fontFamily:'Poppins_500Medium',
+      color: colors.black,
+      opacity:0.5,
+  },
+  no:{
+      fontFamily:'Poppins_500Medium',
+      opacity:0.5,
+  }
+
+    
 });
