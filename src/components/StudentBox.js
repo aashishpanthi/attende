@@ -2,28 +2,29 @@ import { Text, Image } from "react-native";
 import {
   PanGestureHandler,
   GestureHandlerRootView,
-  State,
 } from "react-native-gesture-handler";
 import styles from "../styles/take_attendance";
 import Animated, {
+  runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
+import colors from "../../config/colors";
+import { useState } from "react";
 
 const StudentBox = ({ item }) => {
-  const lastOffset = {
-    x: 0,
-    y: 0,
-  };
+  const [backgroundColor, setBackgroundColor] = useState(colors.primary);
 
   const translateX = useSharedValue(0);
   const _onPanGestureEvent = useAnimatedGestureHandler({
     onActive: (event) => {
       translateX.value = event.translationX;
     },
-    onEnd: (event) => {
+    onEnd: () => {
+      const position = translateX.value;
+      runOnJS(setBackgroundColor)(position > 0 ? colors.green : colors.red);
       translateX.value = withTiming(0);
     },
   });
@@ -36,22 +37,22 @@ const StudentBox = ({ item }) => {
     ],
   }));
 
-  const _handleStateChange = ({ nativeEvent }) => {
-    if (nativeEvent.state === State.ACTIVE) {
-      // alert("Doing something");
-    }
-  };
-
   return (
     <GestureHandlerRootView>
       <PanGestureHandler
         minDist={25}
         maxPointers={0}
         onGestureEvent={_onPanGestureEvent}
-        onHandlerStateChange={_handleStateChange}
       >
         <Animated.View style={[styles.student, rStyle]}>
-          <Animated.View style={styles.box} />
+          <Animated.View
+            style={[
+              styles.box,
+              {
+                backgroundColor: backgroundColor,
+              },
+            ]}
+          />
           <Animated.View style={styles.imageContainer}>
             <Image
               resizeMode="contain"

@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   box: {
     width: 10,
     height: "100%",
-    backgroundColor: colors.primary,
     borderBottomLeftRadius: 10,
     borderTopLeftRadius: 10,
     marginRight: 12,
