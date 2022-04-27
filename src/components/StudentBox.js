@@ -5,6 +5,7 @@ import {
 } from "react-native-gesture-handler";
 import styles from "../styles/take_attendance";
 import Animated, {
+  FadeIn,
   runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
@@ -13,9 +14,18 @@ import Animated, {
 } from "react-native-reanimated";
 import colors from "../../config/colors";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import {
+  faCheckCircle,
+  faCheckDouble,
+  faCoffee,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
 const StudentBox = ({ item }) => {
   const [backgroundColor, setBackgroundColor] = useState(colors.primary);
+  const [present, setPresent] = useState(false);
+  const [absent, setAbsent] = useState(false);
 
   const translateX = useSharedValue(0);
   const _onPanGestureEvent = useAnimatedGestureHandler({
@@ -24,7 +34,16 @@ const StudentBox = ({ item }) => {
     },
     onEnd: () => {
       const position = translateX.value;
-      runOnJS(setBackgroundColor)(position > 0 ? colors.green : colors.red);
+      if (position > 0) {
+        runOnJS(setAbsent)(false);
+        runOnJS(setPresent)(true);
+        runOnJS(setBackgroundColor)(colors.green);
+      } else if (position < 0) {
+        runOnJS(setPresent)(false);
+        runOnJS(setAbsent)(true);
+        runOnJS(setBackgroundColor)(colors.red);
+      }
+
       translateX.value = withTiming(0);
     },
   });
@@ -64,6 +83,24 @@ const StudentBox = ({ item }) => {
             <Text style={styles.name}>{item.name}</Text>
             <Text style={styles.roll}>Roll No. {item.Roll}</Text>
           </Animated.View>
+          {present && (
+            <Animated.View entering={FadeIn} style={styles.icon}>
+              <FontAwesomeIcon
+                size={22}
+                icon={faCheckCircle}
+                color={colors.green}
+              />
+            </Animated.View>
+          )}
+          {absent && (
+            <Animated.View entering={FadeIn} style={styles.icon}>
+              <FontAwesomeIcon
+                size={22}
+                icon={faTimesCircle}
+                color={colors.red}
+              />
+            </Animated.View>
+          )}
         </Animated.View>
       </PanGestureHandler>
     </GestureHandlerRootView>

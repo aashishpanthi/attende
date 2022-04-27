@@ -14,6 +14,10 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     backgroundColor: colors.white,
   },
+  icon: {
+    marginLeft: "auto",
+    marginRight: 20,
+  },
   image: {
     height: 50,
     alignSelf: "center",
