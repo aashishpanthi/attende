@@ -1,13 +1,13 @@
-import  { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Loginparent from "./src/screens/Loginparent";
 import Loginteacher from "./src/screens/Loginteacher";
 import Welcome from "./src/screens/Welcome";
 import colors from "./config/colors";
-import Teacherhome from './src/screens/Teacherhome';
+import Teacherhome from "./src/screens/Teacherhome";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Takeattendance from "./src/components/Takeattendance";
-import Parenthome from './src/screens/Parenthome';
+import Takeattendance from "./src/screens/TakeAttendance";
+import Parenthome from "./src/screens/Parenthome";
 import {
   useFonts,
   Poppins_800ExtraBold,
@@ -43,18 +43,18 @@ export default function App() {
           name="Attendance"
           component={Takeattendance}
           options={{
-            title: "Attendance : "+date,
+            title: "Attendance : " + date,
             headerStyle: {
-              backgroundColor: colors.navbar,
+              backgroundColor: colors.primary,
             },
-            headerTintColor: "black",
+            headerTintColor: colors.white,
             headerTitleStyle: {
               fontFamily: "Poppins_500Medium",
-              fontSize:20,
+              fontSize: 20,
             },
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Welcome"
           component={Welcome}
           options={{
@@ -75,7 +75,7 @@ export default function App() {
             headerShown: false,
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Teacherhome"
           component={Teacherhome}
           options={{
