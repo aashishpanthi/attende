@@ -1,11 +1,16 @@
-import { Text, View, Image, Animated, Dimensions } from "react-native";
+import { Text, Image } from "react-native";
 import {
   PanGestureHandler,
   GestureHandlerRootView,
   State,
 } from "react-native-gesture-handler";
 import styles from "../styles/take_attendance";
-// import Animated from "react-native-reanimated";
+import Animated, {
+  useAnimatedGestureHandler,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 
 const StudentBox = ({ item }) => {
   const lastOffset = {
@@ -13,23 +18,27 @@ const StudentBox = ({ item }) => {
     y: 0,
   };
 
-  const translateX = new Animated.Value(0);
-  const translateY = new Animated.Value(0);
-  const _onPanGestureEvent = Animated.event(
-    [
+  const translateX = useSharedValue(0);
+  const _onPanGestureEvent = useAnimatedGestureHandler({
+    onActive: (event) => {
+      translateX.value = event.translationX;
+    },
+    onEnd: (event) => {
+      translateX.value = withTiming(0);
+    },
+  });
+
+  const rStyle = useAnimatedStyle(() => ({
+    transform: [
       {
-        nativeEvent: {
-          translationX: translateX,
-          translationY: translateY,
-        },
+        translateX: translateX.value,
       },
     ],
-    { useNativeDriver: true }
-  );
+  }));
 
   const _handleStateChange = ({ nativeEvent }) => {
     if (nativeEvent.state === State.ACTIVE) {
-      alert("Doing something");
+      // alert("Doing something");
     }
   };
 
@@ -41,18 +50,7 @@ const StudentBox = ({ item }) => {
         onGestureEvent={_onPanGestureEvent}
         onHandlerStateChange={_handleStateChange}
       >
-        <Animated.View
-          style={[
-            { ...styles.student },
-            {
-              transform: [
-                {
-                  translateX: translateX,
-                },
-              ],
-            },
-          ]}
-        >
+        <Animated.View style={[styles.student, rStyle]}>
           <Animated.View style={styles.box} />
           <Animated.View style={styles.imageContainer}>
             <Image

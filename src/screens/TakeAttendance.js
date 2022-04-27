@@ -3,7 +3,6 @@ import styles from "../styles/take_attendance";
 
 import { FlatList } from "react-native";
 import StudentBox from "../components/StudentBox";
-import Swipeout from "rc-swipeout";
 
 const students = [
   {
