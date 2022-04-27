@@ -15,6 +15,8 @@ import {
   Poppins_500Medium,
 } from "@expo-google-fonts/poppins";
 import AppLoading from "expo-app-loading";
+import "react-native-gesture-handler";
+
 const Stack = createNativeStackNavigator();
 export default function App() {
   const [date, setDate] = useState(null);
