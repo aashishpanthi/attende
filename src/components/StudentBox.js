@@ -5,7 +5,8 @@ import {
 } from "react-native-gesture-handler";
 import styles from "../styles/take_attendance";
 import Animated, {
-  FadeIn,
+  RotateInUpLeft,
+  RotateInUpRight,
   runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
@@ -17,8 +18,6 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
   faCheckCircle,
-  faCheckDouble,
-  faCoffee,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -43,15 +42,26 @@ const StudentBox = ({ item }) => {
         runOnJS(setAbsent)(true);
         runOnJS(setBackgroundColor)(colors.red);
       }
-
       translateX.value = withTiming(0);
     },
   });
 
+  const manageStatus = ({ status }) => {
+    if (status === "present") {
+      runOnJS(setAbsent)(false);
+      runOnJS(setPresent)(true);
+      runOnJS(setBackgroundColor)(colors.green);
+    } else if (status === "absent") {
+      runOnJS(setPresent)(false);
+      runOnJS(setAbsent)(true);
+      runOnJS(setBackgroundColor)(colors.red);
+    }
+  };
+
   const rStyle = useAnimatedStyle(() => ({
     transform: [
       {
-        translateX: translateX.value,
+        translateX: translateX.value / 1,
       },
     ],
   }));
@@ -59,8 +69,11 @@ const StudentBox = ({ item }) => {
   return (
     <GestureHandlerRootView>
       <PanGestureHandler
-        minDist={25}
         maxPointers={0}
+        // minDist={25}
+        failOffsetY={[-5, 5]}
+        failOffsetX={[-50, 50]}
+        activeOffsetX={[-25, 25]}
         onGestureEvent={_onPanGestureEvent}
       >
         <Animated.View style={[styles.student, rStyle]}>
@@ -84,7 +97,7 @@ const StudentBox = ({ item }) => {
             <Text style={styles.roll}>Roll No. {item.Roll}</Text>
           </Animated.View>
           {present && (
-            <Animated.View entering={FadeIn} style={styles.icon}>
+            <Animated.View entering={RotateInUpLeft} style={styles.icon}>
               <FontAwesomeIcon
                 size={22}
                 icon={faCheckCircle}
@@ -93,7 +106,7 @@ const StudentBox = ({ item }) => {
             </Animated.View>
           )}
           {absent && (
-            <Animated.View entering={FadeIn} style={styles.icon}>
+            <Animated.View entering={RotateInUpRight} style={styles.icon}>
               <FontAwesomeIcon
                 size={22}
                 icon={faTimesCircle}

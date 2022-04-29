@@ -45,7 +45,7 @@ export default function App() {
           name="Attendance"
           component={Takeattendance}
           options={{
-            title: "Attendance : " + date,
+            title: "Attendance: " + date,
             headerStyle: {
               backgroundColor: colors.primary,
             },

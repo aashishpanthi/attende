@@ -10,8 +10,11 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   container: {
-    paddingTop: 15,
-    paddingBottom: 15,
+    position: "absolute",
+    left: 0,
+    width: "100%",
+    paddingTop: 20,
+    paddingBottom: 20,
     backgroundColor: colors.white,
   },
   icon: {
