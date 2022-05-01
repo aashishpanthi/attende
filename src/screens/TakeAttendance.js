@@ -1,7 +1,7 @@
-import React from "react";
+import { useState } from "react";
 import styles from "../styles/take_attendance";
 
-import { FlatList } from "react-native";
+import { ScrollView, SafeAreaView, Dimensions } from "react-native";
 import StudentBox from "../components/StudentBox";
 import { useHeaderHeight } from "@react-navigation/elements";
 
@@ -60,12 +60,12 @@ const students = [
     image: require("../../assets/Model.jpg"),
     Roll: 9,
   },
-  // {
-  //   id: 10,
-  //   name: "Roshan Acharya",
-  //   image: require("../../assets/Model.jpg"),
-  //   Roll: 10,
-  // },
+  {
+    id: 10,
+    name: "Roshan Acharya",
+    image: require("../../assets/Model.jpg"),
+    Roll: 10,
+  },
   // {
   //   id: 11,
   //   name: "Roshan Acharya",
@@ -99,20 +99,34 @@ const students = [
 ];
 
 const Attendance = () => {
+  const [scrollEnabled, setscrollEnabled] = useState(true);
+
+  const list = () => {
+    return students.map((item) => {
+      return (
+        <StudentBox
+          scrollEnabled={setscrollEnabled}
+          key={item.id}
+          item={item}
+        />
+      );
+    });
+  };
   return (
-    <FlatList
-      style={[
-        styles.container,
-        {
-          top: useHeaderHeight(),
-        },
-      ]}
-      data={students}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => {
-        return <StudentBox item={item} />;
-      }}
-    />
+    <SafeAreaView>
+      <ScrollView
+        scrollEnabled={scrollEnabled}
+        style={[
+          styles.container,
+          {
+            top: useHeaderHeight(),
+            height: Dimensions.get("window").height - useHeaderHeight(),
+          },
+        ]}
+      >
+        {list()}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

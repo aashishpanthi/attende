@@ -21,7 +21,7 @@ import {
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
-const StudentBox = ({ item }) => {
+const StudentBox = ({ item, scrollEnabled }) => {
   const [backgroundColor, setBackgroundColor] = useState(colors.primary);
   const [present, setPresent] = useState(false);
   const [absent, setAbsent] = useState(false);
@@ -30,6 +30,7 @@ const StudentBox = ({ item }) => {
   const _onPanGestureEvent = useAnimatedGestureHandler({
     onActive: (event) => {
       translateX.value = event.translationX;
+      runOnJS(scrollEnabled)(false);
     },
     onEnd: () => {
       const position = translateX.value;
@@ -42,6 +43,7 @@ const StudentBox = ({ item }) => {
         runOnJS(setAbsent)(true);
         runOnJS(setBackgroundColor)(colors.red);
       }
+      runOnJS(scrollEnabled)(true);
       translateX.value = withTiming(0);
     },
   });

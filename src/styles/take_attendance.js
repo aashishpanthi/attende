@@ -13,8 +13,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     width: "100%",
-    paddingTop: 20,
-    paddingBottom: 20,
     backgroundColor: colors.white,
   },
   icon: {
