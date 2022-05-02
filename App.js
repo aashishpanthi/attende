@@ -8,6 +8,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Takeattendance from "./src/screens/TakeAttendance";
 import Parenthome from "./src/screens/Parenthome";
+import CreateNotice from "./src/screens/CreateNotice";
+
 import {
   useFonts,
   Poppins_800ExtraBold,
@@ -89,6 +91,18 @@ export default function App() {
           component={Parenthome}
           options={{
             headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="CreateNotice"
+          component={CreateNotice}
+          options={{
+            title: "Create Notice",
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
           }}
         />
       </Stack.Navigator>
