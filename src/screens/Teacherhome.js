@@ -111,14 +111,14 @@ export default function Parenthome({ navigation }) {
         </TouchableNativeFeedback>
         <TouchableNativeFeedback
           style={styles.btn}
-          onPress={() => navigation.navigate("Attendance")}
+          onPress={() => navigation.navigate("BrowseLeaveAppeals")}
         >
           <View style={styles.nav}>
             <Image
               style={styles.icon}
               source={require("../../assets/ereader.png")}
             />
-            <Text style={styles.navinfo}>Leave appeal </Text>
+            <Text style={styles.navinfo}>Browse Leave appeals </Text>
 
             <Image
               style={styles.iconarr}

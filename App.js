@@ -10,6 +10,7 @@ import Takeattendance from "./src/screens/TakeAttendance";
 import Parenthome from "./src/screens/Parenthome";
 import CreateNotice from "./src/screens/CreateNotice";
 import PreviousNotices from "./src/screens/PreviousNotices";
+import LeaveAppeals from "./src/screens/BrowseLeaveAppeals";
 
 import {
   useFonts,
@@ -17,6 +18,7 @@ import {
   Poppins_100Thin,
   Poppins_500Medium,
   Poppins_400Regular,
+  Poppins_300Light,
 } from "@expo-google-fonts/poppins";
 import AppLoading from "expo-app-loading";
 import "react-native-gesture-handler";
@@ -39,6 +41,7 @@ export default function App() {
     Poppins_500Medium,
     Poppins_100Thin,
     Poppins_400Regular,
+    Poppins_300Light,
   });
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -113,6 +116,17 @@ export default function App() {
           component={PreviousNotices}
           options={{
             title: "Previous Notices",
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
+          }}
+        />
+        <Stack.Screen
+          name="BrowseLeaveAppeals"
+          component={LeaveAppeals}
+          options={{
+            title: "Leave Appeals",
             headerStyle: {
               backgroundColor: colors.primary,
             },
