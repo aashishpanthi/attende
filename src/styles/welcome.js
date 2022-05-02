@@ -5,26 +5,28 @@ const styles = StyleSheet.create({
   container: {
     height: 200,
     width: 200,
-    borderRadius: 25,
+    borderRadius: 15,
     backgroundColor: colors.white,
-    shadowColor: colors.shadow,
-    elevation: 25,
+    shadowColor: colors.primary,
+    shadowOpacity: 0.2,
+    elevation: 10,
+    alignItems: "center",
+    padding: 15,
   },
   head: {
-    fontSize: 48,
+    fontSize: 40,
     color: colors.primary,
     fontFamily: "Poppins_800ExtraBold",
   },
-  img: {
-    marginTop: 25,
-    height: 125,
-    alignSelf: "center",
+  image: {
+    flex: 1,
+    resizeMode: "contain",
   },
   maincontainer: {
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "space-around",
     flexDirection: "column",
   },
   txt: {
@@ -32,7 +34,6 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_500Medium",
     color: colors.primary,
     fontSize: 20,
-    marginTop: 8,
   },
 });
 
