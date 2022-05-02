@@ -11,6 +11,7 @@ import Parenthome from "./src/screens/Parenthome";
 import CreateNotice from "./src/screens/CreateNotice";
 import PreviousNotices from "./src/screens/PreviousNotices";
 import LeaveAppeals from "./src/screens/BrowseLeaveAppeals";
+import AppealLeave from "./src/screens/AppealLeave";
 
 import {
   useFonts,
@@ -127,6 +128,17 @@ export default function App() {
           component={LeaveAppeals}
           options={{
             title: "Leave Appeals",
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
+          }}
+        />
+        <Stack.Screen
+          name="AppealLeave"
+          component={AppealLeave}
+          options={{
+            title: "Appeal leave",
             headerStyle: {
               backgroundColor: colors.primary,
             },

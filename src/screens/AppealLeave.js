@@ -1,18 +1,18 @@
 import { useState } from "react";
 import BoxAndButton from "../components/BoxAndButton";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
-const CreateNotice = () => {
+const AppealLeave = () => {
   const [text, setText] = useState("");
 
   return (
     <BoxAndButton
       text={text}
       setText={setText}
-      icon={faUpload}
-      btnText="Publish notice"
+      icon={faPaperPlane}
+      btnText="Appeal leave"
     />
   );
 };
 
-export default CreateNotice;
+export default AppealLeave;
