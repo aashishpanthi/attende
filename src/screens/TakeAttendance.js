@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/take_attendance";
 
-import { FlatList } from "react-native";
+import { FlatList ,View,ScrollView} from "react-native";
 import StudentBox from "../components/StudentBox";
 
 const students = [
@@ -27,6 +27,7 @@ const students = [
 
 const Attendance = () => {
   return (
+    
     <FlatList
       style={styles.container}
       data={students}
@@ -34,6 +35,7 @@ const Attendance = () => {
         return <StudentBox item={item} />;
       }}
     />
+    
   );
 };
 

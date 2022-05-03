@@ -1,15 +1,18 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet,Platform,StatusBar } from "react-native";
 import colors from "../../config/colors";
 
 const styles = StyleSheet.create({
+ 
   box: {
     width: 10,
     height: "100%",
     borderBottomLeftRadius: 10,
     borderTopLeftRadius: 10,
     marginRight: 12,
+   
   },
   container: {
+ 
     paddingTop: 15,
     paddingBottom: 15,
     backgroundColor: colors.white,
