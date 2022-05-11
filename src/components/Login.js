@@ -7,12 +7,14 @@ import {
   Image,
   TextInput,
 } from "react-native";
+import ForgotPasswordModal from "./ForgotPasswordModel";
 
 import styles from "../styles/login";
 
-function Login({ navigation, role,navv }) {
+function Login({ navigation, role, navv }) {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -52,10 +54,12 @@ function Login({ navigation, role,navv }) {
         >
           <Text style={styles.btn}>Sign in</Text>
         </Pressable>
-        <Pressable style={styles.forget}>
+        <Pressable onPress={() => setShowModal(true)}>
           <Text style={styles.forgot}>Forgot password ?</Text>
         </Pressable>
       </View>
+
+      <ForgotPasswordModal visible={showModal} setShowModal={setShowModal} />
     </SafeAreaView>
   );
 }

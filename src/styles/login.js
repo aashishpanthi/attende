@@ -61,6 +61,41 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginTop: "5%",
   },
+  modal: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  modalBox: {
+    height: 140,
+    width: "90%",
+    borderRadius: 15,
+    backgroundColor: colors.white,
+    padding: 15,
+  },
+  modalContact: {
+    display: "flex",
+    flexDirection: "row",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  modalContactIcon: {
+    color: colors.lightBlack,
+  },
+  modalContactText: {
+    fontFamily: "Poppins_400Regular",
+    fontSize: 14,
+    color: colors.lightBlack,
+    marginLeft: 10,
+  },
+  modalHead: {
+    fontSize: 16,
+    textAlign: "center",
+    fontFamily: "Poppins_500Medium",
+    color: colors.black,
+    marginBottom: 10,
+  },
 });
 
 export default styles;
