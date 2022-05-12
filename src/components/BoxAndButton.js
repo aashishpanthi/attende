@@ -3,7 +3,7 @@ import styles from "../styles/box_and_button";
 
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
-const BoxAndButton = ({ icon, text, setText, btnText }) => {
+const BoxAndButton = ({ icon, text, setText, btnText, handleSubmit }) => {
   return (
     <ScrollView style={styles.container}>
       <TextInput
@@ -15,7 +15,7 @@ const BoxAndButton = ({ icon, text, setText, btnText }) => {
         placeholder="Write a detailed message..."
       />
 
-      <TouchableOpacity style={styles.button} onPress={() => alert(text)}>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.btnTxt}>{btnText}</Text>
         <FontAwesomeIcon icon={icon} size={20} style={styles.icon} />
       </TouchableOpacity>
