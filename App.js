@@ -12,6 +12,7 @@ import CreateNotice from "./src/screens/CreateNotice";
 import PreviousNotices from "./src/screens/PreviousNotices";
 import LeaveAppeals from "./src/screens/BrowseLeaveAppeals";
 import AppealLeave from "./src/screens/AppealLeave";
+import * as SecureStore from "expo-secure-store";
 
 import {
   useFonts,
@@ -27,7 +28,26 @@ import "react-native-gesture-handler";
 const Stack = createNativeStackNavigator();
 export default function App() {
   const [date, setDate] = useState(null);
+  const [defaultScreen, setDefaultScreen] = useState("Welcome");
+
+  const getToken = async () => {
+    const token = await SecureStore.getItemAsync("user");
+    if (token) {
+      console.log(token);
+      const role = JSON.parse(token).role;
+      if (role === "parent") {
+        setDefaultScreen("Parenthome");
+      } else {
+        setDefaultScreen("Teacherhome");
+      }
+      // navigation.navigate(
+      //   `${role === "parent" ? "Parenthome" : "Teacherhome"}`
+      // );
+    }
+  };
+
   useEffect(() => {
+    getToken();
     let today = new Date();
     let date =
       today.getFullYear() +
@@ -49,7 +69,7 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator initialRouteName={defaultScreen}>
         <Stack.Screen
           name="Attendance"
           component={Takeattendance}
@@ -65,27 +85,30 @@ export default function App() {
             },
           }}
         />
-        <Stack.Screen
-          name="Welcome"
-          component={Welcome}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Loginp"
-          component={Loginparent}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Logint"
-          component={Loginteacher}
-          options={{
-            headerShown: false,
-          }}
-        />
+
+        <>
+          <Stack.Screen
+            name="Welcome"
+            component={Welcome}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Loginp"
+            component={Loginparent}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Logint"
+            component={Loginteacher}
+            options={{
+              headerShown: false,
+            }}
+          />
+        </>
         <Stack.Screen
           name="Teacherhome"
           component={Teacherhome}
