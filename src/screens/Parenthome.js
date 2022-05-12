@@ -7,23 +7,28 @@ import {
   Image,
   TouchableNativeFeedback,
 } from "react-native";
+import { useState, useEffect } from "react";
 import colors from "../../config/colors";
-import {
-  useFonts,
-  Poppins_800ExtraBold,
-  Poppins_100Thin,
-  Poppins_500Medium,
-} from "@expo-google-fonts/poppins";
-import AppLoading from "expo-app-loading";
+import * as SecureStore from "expo-secure-store";
+
 export default function Parenthome({ navigation }) {
-  let [fontsLoaded] = useFonts({
-    Poppins_800ExtraBold,
-    Poppins_500Medium,
-    Poppins_100Thin,
+  const [student, setStudent] = useState("");
+
+  const getToken = async () => {
+    try {
+      const token = await SecureStore.getItemAsync("user");
+      if (token) {
+        setStudent(JSON.parse(token));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getToken();
   });
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+
   return (
     <View style={styles.main}>
       <View style={styles.container}>
@@ -32,26 +37,28 @@ export default function Parenthome({ navigation }) {
             <View style={styles.imgwrap}>
               <Image
                 style={styles.img}
-                source={require("../../assets/profile.png")}
+                source={{
+                  uri: student.image,
+                }}
               />
             </View>
           </View>
           <View style={styles.basic}>
-            <Text style={styles.name}>Aashish Panthi</Text>
-            <Text style={styles.address}>Butwal-10 Rupandehi</Text>
+            <Text style={styles.name}>{student?.name}</Text>
+            <Text style={styles.address}>{student?.address}</Text>
           </View>
           <View style={styles.datawrap}>
             <View style={styles.data}>
               <Text style={styles.head}>Class</Text>
-              <Text style={styles.no}>11</Text>
+              <Text style={styles.no}>{student?.class}</Text>
             </View>
             <View style={styles.data}>
               <Text style={styles.head}>Roll No.</Text>
-              <Text style={styles.no}>37</Text>
+              <Text style={styles.no}>{student?.roll_no}</Text>
             </View>
             <View style={styles.data}>
               <Text style={styles.head}>Section</Text>
-              <Text style={styles.no}>T</Text>
+              <Text style={styles.no}>{student?.section}</Text>
             </View>
           </View>
         </View>
@@ -181,15 +188,16 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 25,
-    fontFamily: "Poppins_800ExtraBold",
+    fontFamily: "Poppins_500Medium",
   },
   address: {
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
     fontSize: 15,
     color: colors.primary,
+    marginTop: -5,
   },
   datawrap: {
-    marginTop: "10%",
+    marginTop: 25,
     flexDirection: "row",
     justifyContent: "space-around",
   },
@@ -199,10 +207,12 @@ const styles = StyleSheet.create({
   head: {
     fontFamily: "Poppins_500Medium",
     color: colors.black,
-    opacity: 0.5,
+    opacity: 0.6,
   },
   no: {
     fontFamily: "Poppins_500Medium",
-    opacity: 0.5,
+    opacity: 0.7,
+    fontSize: 20,
+    marginTop: -5,
   },
 });
