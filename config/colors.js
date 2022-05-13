@@ -8,4 +8,7 @@ export default {
   green: "#2ECD6E",
   red: "#F76D23",
   lightBlack: "#2F2E41",
+  lightPrimary: "rgba(9, 145, 246, 0.25)",
+  lightGreen: "rgba(46, 205, 110, 0.5)",
+  lightRed: "rgba(247, 109, 35, 0.5)",
 };

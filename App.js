@@ -8,11 +8,18 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Takeattendance from "./src/screens/TakeAttendance";
 import Parenthome from "./src/screens/Parenthome";
+import CreateNotice from "./src/screens/CreateNotice";
+import PreviousNotices from "./src/screens/PreviousNotices";
+import LeaveAppeals from "./src/screens/BrowseLeaveAppeals";
+import AppealLeave from "./src/screens/AppealLeave";
+
 import {
   useFonts,
   Poppins_800ExtraBold,
   Poppins_100Thin,
   Poppins_500Medium,
+  Poppins_400Regular,
+  Poppins_300Light,
 } from "@expo-google-fonts/poppins";
 import AppLoading from "expo-app-loading";
 import "react-native-gesture-handler";
@@ -34,6 +41,8 @@ export default function App() {
     Poppins_800ExtraBold,
     Poppins_500Medium,
     Poppins_100Thin,
+    Poppins_400Regular,
+    Poppins_300Light,
   });
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -45,7 +54,7 @@ export default function App() {
           name="Attendance"
           component={Takeattendance}
           options={{
-            title: "Attendance : " + date,
+            title: "Attendance: " + date,
             headerStyle: {
               backgroundColor: colors.primary,
             },
@@ -89,6 +98,51 @@ export default function App() {
           component={Parenthome}
           options={{
             headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="CreateNotice"
+          component={CreateNotice}
+          options={{
+            title: "Create Notice",
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
+          }}
+        />
+        <Stack.Screen
+          name="PreviousNotices"
+          component={PreviousNotices}
+          options={{
+            title: "Previous Notices",
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
+          }}
+        />
+        <Stack.Screen
+          name="BrowseLeaveAppeals"
+          component={LeaveAppeals}
+          options={{
+            title: "Leave Appeals",
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
+          }}
+        />
+        <Stack.Screen
+          name="AppealLeave"
+          component={AppealLeave}
+          options={{
+            title: "Appeal leave",
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
           }}
         />
       </Stack.Navigator>
