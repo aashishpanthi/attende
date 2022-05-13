@@ -41,13 +41,31 @@ const styles = StyleSheet.create({
       fontSize:15,
       color:colors.blue,
   },
+  contactbox:{
+      alignItems:'center',
+      width:'100%',
+      height:'10%'
+  },
   contact:{
-      marginTop:'40%',
+      marginTop:'30%',
       width:'80%',
-      height:'10%',
-      backgroundColor:colors.blue,
+      height:'100%',
+      backgroundColor:colors.white,
+      elevation:15,
+      shadowColor:colors.green,
+      shadowOpacity:0.50,
+      borderRadius:10,
+      alignItems:'center',
+      justifyContent:'center',    
+  },
+  txt:{
+    fontFamily:'Poppins_500Medium',   
+  },
+  attendance:{
+      height:'50%',
+      width:'100%',
+      color:'red'
   }
- 
 });
 
 export default styles;
