@@ -1,8 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet} from "react-native";
 import colors from "../../config/colors";
 
 const styles = StyleSheet.create({
   body: {
+   
     fontSize: 15,
     paddingHorizontal: 15,
     fontFamily: "Poppins_400Regular",
@@ -10,6 +11,7 @@ const styles = StyleSheet.create({
     color: colors.lightBlack,
   },
   box: {
+    
     margin: 10,
     shadowColor: colors.primary,
     elevation: 10,
@@ -22,6 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     paddingVertical: 25,
+  
   },
   date: {
     fontFamily: "Poppins_300Light",

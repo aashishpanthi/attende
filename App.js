@@ -14,6 +14,7 @@ import LeaveAppeals from "./src/screens/BrowseLeaveAppeals";
 import AppealLeave from "./src/screens/AppealLeave";
 import * as SecureStore from "expo-secure-store";
 
+import Attendanceinfo from "./src/screens/Attendanceinfo";
 import {
   useFonts,
   Poppins_800ExtraBold,
@@ -160,6 +161,15 @@ export default function App() {
             headerStyle: {
               backgroundColor: colors.primary,
             },
+            headerTintColor: colors.white,
+          }}
+        />
+        <Stack.Screen
+          name="Studentinfo"
+          component={Attendanceinfo}
+          options={{
+            title: "",
+            headerTransparent: true,
             headerTintColor: colors.white,
           }}
         />

@@ -1,7 +1,8 @@
 import { StyleSheet } from "react-native";
 import colors from "../../config/colors";
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
+  
   box: {
     margin: 15,
     shadowColor: colors.primary,
