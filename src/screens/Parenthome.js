@@ -59,7 +59,7 @@ export default function Parenthome({ navigation }) {
       <View style={styles.navcontainer}>
         <TouchableNativeFeedback
           style={styles.btn}
-          onPress={() => navigation.navigate("Attendance")}
+          onPress={() => navigation.navigate("Studentinfo")}
         >
           <View style={styles.nav}>
             <Image

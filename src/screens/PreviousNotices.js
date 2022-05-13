@@ -20,6 +20,7 @@ const notices = [
 
 const PreviousNotices = () => {
   return (
+    <View>
     <FlatList
       style={styles.container}
       data={notices}
@@ -27,6 +28,7 @@ const PreviousNotices = () => {
         return <Notice item={item} />;
       }}
     />
+    </View>
   );
 };
 

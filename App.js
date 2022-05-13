@@ -12,7 +12,7 @@ import CreateNotice from "./src/screens/CreateNotice";
 import PreviousNotices from "./src/screens/PreviousNotices";
 import LeaveAppeals from "./src/screens/BrowseLeaveAppeals";
 import AppealLeave from "./src/screens/AppealLeave";
-
+import Attendanceinfo from "./src/screens/Attendanceinfo";
 import {
   useFonts,
   Poppins_800ExtraBold,
@@ -72,6 +72,7 @@ export default function App() {
             headerShown: false,
           }}
         />
+        
         <Stack.Screen
           name="Loginp"
           component={Loginparent}
@@ -142,6 +143,15 @@ export default function App() {
             headerStyle: {
               backgroundColor: colors.primary,
             },
+            headerTintColor: colors.white,
+          }}
+        />
+        <Stack.Screen
+          name="Studentinfo"
+          component={Attendanceinfo}
+          options={{
+            title: "",
+            headerTransparent:true,
             headerTintColor: colors.white,
           }}
         />

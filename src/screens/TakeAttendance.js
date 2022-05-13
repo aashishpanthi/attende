@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/take_attendance";
 
-import { FlatList ,View,ScrollView} from "react-native";
+
 import { ScrollView, SafeAreaView, Dimensions } from "react-native";
 import StudentBox from "../components/StudentBox";
 import { useHeaderHeight } from "@react-navigation/elements";
