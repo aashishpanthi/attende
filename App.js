@@ -23,7 +23,6 @@ import {
   Poppins_300Light,
 } from "@expo-google-fonts/poppins";
 import AppLoading from "expo-app-loading";
-import "react-native-gesture-handler";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -79,10 +78,6 @@ export default function App() {
               backgroundColor: colors.primary,
             },
             headerTintColor: colors.white,
-            headerTitleStyle: {
-              fontFamily: "Poppins_500Medium",
-              fontSize: 20,
-            },
           }}
         />
 

@@ -10,9 +10,7 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   container: {
-    position: "absolute",
-    left: 0,
-    width: "100%",
+    flex: 1,
     backgroundColor: colors.white,
   },
   icon: {

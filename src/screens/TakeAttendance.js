@@ -1,9 +1,8 @@
-import { useState } from "react";
 import styles from "../styles/take_attendance";
 
-import { ScrollView, SafeAreaView, Dimensions } from "react-native";
+import { FlatList } from "react-native";
 import StudentBox from "../components/StudentBox";
-import { useHeaderHeight } from "@react-navigation/elements";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const students = [
   {
@@ -99,33 +98,14 @@ const students = [
 ];
 
 const Attendance = () => {
-  const [scrollEnabled, setscrollEnabled] = useState(true);
-
-  const list = () => {
-    return students.map((item) => {
-      return (
-        <StudentBox
-          scrollEnabled={setscrollEnabled}
-          key={item.id}
-          item={item}
-        />
-      );
-    });
-  };
   return (
-    <SafeAreaView>
-      <ScrollView
-        scrollEnabled={scrollEnabled}
-        style={[
-          styles.container,
-          {
-            top: useHeaderHeight(),
-            height: Dimensions.get("window").height - useHeaderHeight(),
-          },
-        ]}
-      >
-        {list()}
-      </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={students}
+        renderItem={({ item }) => {
+          return <StudentBox item={item} />;
+        }}
+      />
     </SafeAreaView>
   );
 };
