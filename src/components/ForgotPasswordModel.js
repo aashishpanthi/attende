@@ -12,7 +12,7 @@ import {
 import styles from "../styles/login";
 
 const ForgotPasswordModal = ({ visible, setShowModal }) => {
-  const phoneNumber = "+9779867526912";
+  const phoneNumber = "+977 9867526912";
   const email = "info@aashishpanthi.me";
   return (
     <Modal

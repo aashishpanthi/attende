@@ -1,10 +1,23 @@
-import { View, Text, Image, TouchableNativeFeedback } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+} from "react-native";
 import { useState, useEffect } from "react";
 import * as SecureStore from "expo-secure-store";
 import styles from "../styles/parent_home";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Parenthome({ navigation }) {
   const [student, setStudent] = useState("");
+
+  const logout = async () => {
+    await SecureStore.deleteItemAsync("user");
+    navigation.navigate("Welcome");
+  };
 
   const getToken = async () => {
     try {
@@ -105,6 +118,14 @@ export default function Parenthome({ navigation }) {
           </View>
         </TouchableNativeFeedback>
       </View>
+
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={logout}
+        style={styles.touchableOpacityStyle}
+      >
+        <FontAwesomeIcon icon={faSignOutAlt} size={20} color="white" />
+      </TouchableOpacity>
     </View>
   );
 }
