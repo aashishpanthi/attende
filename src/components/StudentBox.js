@@ -1,6 +1,5 @@
 import { Text, Image, View, TouchableNativeFeedback } from "react-native";
 import styles from "../styles/take_attendance";
-import Animated, { RotateInUpLeft } from "react-native-reanimated";
 import colors from "../../config/colors";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -9,11 +8,21 @@ import {
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
-const StudentBox = ({ item }) => {
+const StudentBox = ({ item, setPresentStudents, presentStudents }) => {
   const [present, setPresent] = useState(true);
 
+  const handelClick = () => {
+    if (present) {
+      setPresent(false);
+      setPresentStudents(presentStudents.filter((id) => id !== item.id));
+    } else {
+      setPresent(true);
+      setPresentStudents([...presentStudents, item.id]);
+    }
+  };
+
   return (
-    <TouchableNativeFeedback onPress={() => setPresent(!present)}>
+    <TouchableNativeFeedback onPress={() => handelClick()}>
       <View style={styles.student}>
         <View
           style={[
@@ -35,7 +44,7 @@ const StudentBox = ({ item }) => {
           <Text style={styles.roll}>Roll No. {item.Roll}</Text>
         </View>
 
-        <Animated.View entering={RotateInUpLeft} style={styles.icon}>
+        <View style={styles.icon}>
           {present ? (
             <FontAwesomeIcon
               size={22}
@@ -49,7 +58,7 @@ const StudentBox = ({ item }) => {
               color={colors.red}
             />
           )}
-        </Animated.View>
+        </View>
       </View>
     </TouchableNativeFeedback>
   );
