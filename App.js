@@ -12,6 +12,7 @@ import CreateNotice from "./src/screens/CreateNotice";
 import PreviousNotices from "./src/screens/PreviousNotices";
 import LeaveAppeals from "./src/screens/BrowseLeaveAppeals";
 import AppealLeave from "./src/screens/AppealLeave";
+import AttendanceRecord from "./src/screens/AttendanceRecord";
 import * as SecureStore from "expo-secure-store";
 
 import Attendanceinfo from "./src/screens/Attendanceinfo";
@@ -120,6 +121,17 @@ export default function App() {
           }}
         />
 
+        <Stack.Screen
+          name="Attendancerecord"
+          component={AttendanceRecord}
+          options={{
+            title: "Attendance record",
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
+          }}
+        />
         <Stack.Screen
           name="CreateNotice"
           component={CreateNotice}

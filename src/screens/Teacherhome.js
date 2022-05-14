@@ -52,7 +52,7 @@ export default function Teacherhome({ navigation }) {
           img={require("../../assets/activity.png")}
           title="Attendance record"
           navigation={navigation}
-          path="Attendance"
+          path="Attendancerecord"
         />
         <NavItem
           img={require("../../assets/plus.png")}
