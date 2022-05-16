@@ -9,6 +9,11 @@ const CreateNotice = () => {
   const [text, setText] = useState("");
 
   const handleSubmit = async () => {
+    if (text.length === 0) {
+      Alert.alert("Error", "Please enter a notice information");
+      return;
+    }
+
     try {
       await addDoc(collection(db, "notices"), {
         message: text,

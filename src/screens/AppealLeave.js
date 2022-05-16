@@ -26,6 +26,11 @@ const AppealLeave = () => {
   });
 
   const handleSubmit = async () => {
+    if (text.length === 0) {
+      Alert.alert("Error", "Please enter your appeal");
+      return;
+    }
+
     try {
       await addDoc(collection(db, "leave_appeals"), {
         student: studentId,
