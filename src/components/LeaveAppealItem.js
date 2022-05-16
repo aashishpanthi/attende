@@ -32,6 +32,7 @@ const LeaveAppealItem = ({ id, date, message, status, student }) => {
       await updateDoc(docRef, {
         status: status,
       });
+      setAppealStatus(status);
     } catch (err) {
       console.log(err);
     }
