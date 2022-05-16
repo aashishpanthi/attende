@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import ForgotPasswordModal from "./ForgotPasswordModel";
 import { db } from "../../config/firebase";
-import { onSnapshot, query, collection, where } from "firebase/firestore";
+import { getDoc, collection, doc } from "firebase/firestore";
 import * as SecureStore from "expo-secure-store";
 
 import styles from "../styles/login";
@@ -35,33 +35,27 @@ const Login = ({ navigation, role }) => {
         { text: "OK" },
       ]);
     } else {
-      const usersRef = collection(db, "users");
-      const q = query(
-        usersRef,
-        where("password", "==", password),
-        where("role", "==", role)
-      );
-      onSnapshot(q, (snapshot) => {
-        const items = snapshot.docs.map((doc) => ({
-          ...doc.data(),
-          _id: doc.id,
-        }));
+      const usersRef = doc(db, "users", username);
 
-        items.map((item) => {
-          if (item._id === username) {
-            save("user", JSON.stringify(item));
+      try {
+        const userSnap = await getDoc(usersRef);
+        if (userSnap.exists() && userSnap.data().role === role) {
+          if (userSnap.data().password === password) {
+            save("user", JSON.stringify(userSnap.data()));
             navigation.navigate(
               `${role === "parent" ? "Parenthome" : "Teacherhome"}`
             );
           }
-        });
-
-        Alert.alert("Invalid credentials", "Invalid username or password", [
-          {
-            text: "Cancel",
-          },
-        ]);
-      });
+        } else {
+          Alert.alert("Invalid credentials", "Invalid username or password", [
+            {
+              text: "Cancel",
+            },
+          ]);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
