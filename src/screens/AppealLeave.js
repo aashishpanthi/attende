@@ -31,6 +31,7 @@ const AppealLeave = () => {
         student: studentId,
         message: text,
         date: Timestamp.fromDate(new Date()),
+        status: "",
       });
 
       Alert.alert("Success", "Your appeal has been sent");

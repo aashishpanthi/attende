@@ -1,8 +1,12 @@
 import styles from "../styles/take_attendance";
-
-import { FlatList } from "react-native";
+import { ScrollView, SafeAreaView, View } from "react-native";
 import StudentBox from "../components/StudentBox";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { faAngleDoubleRight, faTimes } from "@fortawesome/free-solid-svg-icons";
+import colors from "../../config/colors";
+import { useState } from "react";
+import Button from "../components/Button";
+
+import AttendanceModal from "../components/AttendanceModal";
 
 const students = [
   {
@@ -65,46 +69,53 @@ const students = [
     image: require("../../assets/Model.jpg"),
     Roll: 10,
   },
-  // {
-  //   id: 11,
-  //   name: "Roshan Acharya",
-  //   image: require("../../assets/Model.jpg"),
-  //   Roll: 11,
-  // },
-  // {
-  //   id: 12,
-  //   name: "Roshan Acharya",
-  //   image: require("../../assets/Model.jpg"),
-  //   Roll: 12,
-  // },
-  // {
-  //   id: 13,
-  //   name: "Roshan Acharya",
-  //   image: require("../../assets/Model.jpg"),
-  //   Roll: 13,
-  // },
-  // {
-  //   id: 14,
-  //   name: "Roshan Pathak",
-  //   image: require("../../assets/Model.jpg"),
-  //   Roll: 14,
-  // },
-  // {
-  //   id: 15,
-  //   name: "Roshan Pathak",
-  //   image: require("../../assets/Model.jpg"),
-  //   Roll: 15,
-  // },
 ];
 
-const Attendance = () => {
+const Attendance = ({ navigation }) => {
+  const [showModal, setShowModal] = useState(false);
+  const studentsId = students.map((student) => student.id);
+  const [presentStudents, setPresentStudents] = useState(studentsId);
+
+  const handleSubmit = () => {
+    navigation.navigate("Teacherhome");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={students}
-        renderItem={({ item }) => {
-          return <StudentBox item={item} />;
-        }}
+      <ScrollView>
+        {students.map((student) => (
+          <StudentBox
+            key={student.id}
+            setPresentStudents={setPresentStudents}
+            presentStudents={presentStudents}
+            item={student}
+          />
+        ))}
+
+        <View style={styles.buttons}>
+          <Button
+            onPress={() => navigation.navigate("Teacherhome")}
+            text="Cancel"
+            icon={faTimes}
+            color={colors.red}
+            styles={styles}
+          />
+          <Button
+            onPress={() => setShowModal(true)}
+            text="Next"
+            icon={faAngleDoubleRight}
+            color={colors.primary}
+            styles={styles}
+          />
+        </View>
+      </ScrollView>
+
+      <AttendanceModal
+        handleSubmit={handleSubmit}
+        presentStudents={presentStudents}
+        visible={showModal}
+        setShowModal={setShowModal}
+        allStudentsId={studentsId}
       />
     </SafeAreaView>
   );

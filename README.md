@@ -16,8 +16,8 @@ After you cloned the repository, go inside the folder with the command `cd atten
 
 ## Install dependencies
 
-Before the preview of project or before editing anything, install project dependencies with command `npm install`. Again make sure you have nodejs is installed on your device.
+Before the preview of project or before editing anything, install project dependencies with command `yarn install`. Again make sure you have nodejs is installed on your device.
 
 ## Start the application
 
-If you've completed all of the previous steps, now you are ready to run your application. Run `npm start` in your terminal/cmd and enjoy.
+If you've completed all of the previous steps, now you are ready to run your application. Run `expo start` in your terminal/cmd and enjoy.

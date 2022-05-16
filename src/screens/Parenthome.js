@@ -1,7 +1,9 @@
-import { View, Text, Image, TouchableNativeFeedback } from "react-native";
+import { View, Text, Image } from "react-native";
 import { useState, useEffect } from "react";
 import * as SecureStore from "expo-secure-store";
-import styles from "../styles/parent_home";
+import styles from "../styles/home";
+import Logout from "../components/Logout";
+import NavItem from "../components/NavItem";
 
 export default function Parenthome({ navigation }) {
   const [student, setStudent] = useState("");
@@ -23,7 +25,7 @@ export default function Parenthome({ navigation }) {
 
   return (
     <View style={styles.main}>
-      <View style={styles.container}>
+      <View style={[styles.container, { height: 200 }]}>
         <View style={styles.infobox}>
           <View style={styles.imgbox}>
             <View style={styles.imgwrap}>
@@ -55,56 +57,28 @@ export default function Parenthome({ navigation }) {
           </View>
         </View>
       </View>
-      <View style={styles.navcontainer}>
-        <TouchableNativeFeedback
-          style={styles.btn}
-          onPress={() => navigation.navigate("Studentinfo")}
-        >
-          <View style={styles.nav}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/activity.png")}
-            />
-            <Text style={styles.navinfo}>Attendance record</Text>
-            <Image
-              style={styles.iconarr}
-              source={require("../../assets/arrow.png")}
-            />
-          </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback
-          style={styles.btn}
-          onPress={() => navigation.navigate("PreviousNotices")}
-        >
-          <View style={styles.nav}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/paper.png")}
-            />
-            <Text style={styles.navinfo}>Browse notice </Text>
-            <Image
-              style={styles.iconarr}
-              source={require("../../assets/arrow.png")}
-            />
-          </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback
-          style={styles.btn}
-          onPress={() => navigation.navigate("AppealLeave")}
-        >
-          <View style={styles.nav}>
-            <Image
-              style={styles.icon}
-              source={require("../../assets/appeal.png")}
-            />
-            <Text style={styles.navinfo}>Appeal Leave </Text>
-            <Image
-              style={styles.iconarr}
-              source={require("../../assets/arrow.png")}
-            />
-          </View>
-        </TouchableNativeFeedback>
+      <View style={{ marginTop: "40%" }}>
+        <NavItem
+          img={require("../../assets/activity.png")}
+          title="Attendance record"
+          navigation={navigation}
+          path="Studentinfo"
+        />
+        <NavItem
+          img={require("../../assets/paper.png")}
+          title="Browse notices"
+          navigation={navigation}
+          path="PreviousNotices"
+        />
+        <NavItem
+          img={require("../../assets/appeal.png")}
+          title="Appeal leave"
+          navigation={navigation}
+          path="AppealLeave"
+        />
       </View>
+
+      <Logout navigation={navigation} />
     </View>
   );
 }

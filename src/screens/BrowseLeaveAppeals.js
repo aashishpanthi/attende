@@ -2,23 +2,30 @@ import React from "react";
 import { FlatList } from "react-native";
 import LeaveAppealItem from "../components/LeaveAppealItem";
 import styles from "../styles/leave_appeal";
-
-const appeals = [
-  {
-    id: 1,
-    studentName: "Aashish Panthi",
-    date: "2078-12-08",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    id: 2,
-    studentName: "Aashish Panthi",
-    date: "2078-12-08",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaa liqua aliqua.",
-  },
-];
+import { collection, onSnapshot, query } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { useEffect, useState } from "react";
 
 const BrowseLeaveAppeals = () => {
+  const [appeals, setAppeals] = useState([]);
+
+  const getAppeals = async () => {
+    const appealsRef = collection(db, "leave_appeals");
+    onSnapshot(query(appealsRef), (snapshot) => {
+      const items = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+
+      setAppeals(items);
+      console.log(items);
+    });
+  };
+
+  useEffect(() => {
+    getAppeals();
+  }, []);
+
   return (
     <FlatList
       style={styles.container}

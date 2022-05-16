@@ -1,15 +1,18 @@
-import { StyleSheet,Platform,StatusBar } from "react-native";
+import { StyleSheet, Platform, StatusBar } from "react-native";
 import colors from "../../config/colors";
 
 const styles = StyleSheet.create({
- 
   box: {
-    width: 10,
+    width: 12,
     height: "100%",
     borderBottomLeftRadius: 10,
     borderTopLeftRadius: 10,
     marginRight: 12,
-   
+  },
+  buttons: {
+    flexDirection: "row",
+    marginVertical: 10,
+    justifyContent: "space-between",
   },
   container: {
     flex: 1,
@@ -29,6 +32,25 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     overflow: "hidden",
     marginRight: 7,
+  },
+  modal: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  modalItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginHorizontal: 15,
+    marginVertical: 10,
+    paddingVertical: 5,
+  },
+  modalItemTitle: {
+    fontSize: 18,
+    fontFamily: "Poppins_400Regular",
+  },
+  modalItemValue: {
+    fontSize: 16,
+    fontFamily: "Poppins_500Medium",
   },
   name: {
     fontSize: 18,
