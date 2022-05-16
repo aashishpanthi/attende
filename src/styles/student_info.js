@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   contactbox:{
       alignItems:'center',
       width:'100%',
-      height:'10%'
+      height:'12%'
   },
   contact:{
       marginTop:'30%',
@@ -55,16 +55,67 @@ const styles = StyleSheet.create({
       shadowColor:colors.green,
       shadowOpacity:0.50,
       borderRadius:10,
-      alignItems:'center',
       justifyContent:'center',    
   },
   txt:{
+      marginLeft:30,
+      fontSize:15,
     fontFamily:'Poppins_500Medium',   
   },
-  attendance:{
-      height:'50%',
+  attendancebox:{
+      height:220,
+      width:'80%',
+      marginTop:'10%',
+      backgroundColor:colors.white,
+      elevation:15,
+      shadowColor:colors.green,
+      shadowOpacity:0.50,
+      borderRadius:10,
+  },
+  header:{
+      height:'30%',
+      marginTop:'-6%',
+      borderTopLeftRadius:10,
+      borderTopRightRadius:10,
+      borderBottomWidth:1,
+      borderBottomColor:'black',
+    
+  },
+  headertxt:{
+      fontSize:10,
+      fontFamily:'Poppins_500Medium',
+      fontSize:20,
+      marginTop:'10%',
+      marginLeft:'5%',
+      opacity:0.6,
+  },
+  infobox:{
+    
       width:'100%',
-      color:'red'
+      flexDirection:'row',
+      justifyContent:'space-around',
+      marginTop:'10%',
+  },
+  databox:{
+      alignItems:'center',
+      backgroundColor:colors.white,
+      height:80,
+      width: 80,
+      borderRadius:10,
+      elevation:2,
+      shadowColor:colors.black,
+      shadowOpacity:0.10,
+      justifyContent:'center'
+  },
+  infotxt:{
+    fontFamily:'Poppins_500Medium',
+    opacity:0.5,
+    fontSize:15
+  },
+  datatxt:{
+    fontFamily:'Poppins_500Medium',
+    opacity:0.5,
+    fontSize:20
   }
 });
 

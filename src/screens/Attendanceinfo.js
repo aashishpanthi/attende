@@ -1,6 +1,10 @@
-import {View,Text,Image}from 'react-native'
+import {View,Text,Image,Pressable,Linking,Picker}from 'react-native'
 import styles from "../styles/student_info";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faPhone, faHome } from "@fortawesome/free-solid-svg-icons";
 const Attendanceinfo = () => {
+  const Phone='+977 9876543210';
+  const Address='Butwal-10, Rupendehi';
   return (
     <View style={styles.container}>
       <View style={styles.head}>
@@ -15,9 +19,43 @@ const Attendanceinfo = () => {
       </View>
       <View style={styles.contactbox}>
       <View style={styles.contact}>
-          <Text style={styles.txt}>+977 9876543210</Text>
-          <Text style={styles.txt}>Butwal-10, Rupendehi</Text>
+      <Pressable
+              onPress={() => Linking.openURL(`tel:${Phone}`)}
+              style={styles.modalContact}
+            >
+          <Text style={styles.txt}><FontAwesomeIcon
+                
+                icon={faPhone}
+                size={15}
+              /> {Phone}</Text>
+          </Pressable>
           
+          <Text style={styles.txt}>
+          <FontAwesomeIcon
+                
+                icon={faHome}
+                size={20}
+              />  {Address}</Text>
+          
+      </View>
+      <View style={styles.attendancebox}>
+      <View style={styles.header}>
+      <Text style={styles.headertxt}>Attendance</Text>
+      <View style={styles.infobox}>
+      <View style={styles.databox}>
+        <Text style={styles.infotxt}>Present</Text>
+        <Text style={styles.datatxt}>7</Text>
+      </View>
+      <View style={styles.databox}>
+        <Text style={styles.infotxt}>Leave</Text>
+        <Text style={styles.datatxt}>1</Text>
+      </View>
+      <View style={styles.databox}>
+        <Text style={styles.infotxt}>Absent</Text>
+        <Text style={styles.datatxt}>0</Text>
+      </View>
+      </View>
+      </View>
       </View>
       </View>
       </View>
