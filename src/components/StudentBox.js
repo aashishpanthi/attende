@@ -33,15 +33,11 @@ const StudentBox = ({ item, setPresentStudents, presentStudents }) => {
           ]}
         />
         <View style={styles.imageContainer}>
-          <Image
-            resizeMode="contain"
-            source={item.image}
-            style={styles.image}
-          />
+          <Image source={{ uri: item.image }} style={styles.image} />
         </View>
         <View>
           <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.roll}>Roll No. {item.Roll}</Text>
+          <Text style={styles.roll}>Roll No. {item.roll_no}</Text>
         </View>
 
         <View style={styles.icon}>

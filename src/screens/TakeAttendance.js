@@ -1,84 +1,84 @@
 import styles from "../styles/take_attendance";
-import { ScrollView, SafeAreaView, View } from "react-native";
+import { ScrollView, SafeAreaView, View, Alert } from "react-native";
 import StudentBox from "../components/StudentBox";
 import { faAngleDoubleRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 import colors from "../../config/colors";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../components/Button";
-
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  addDoc,
+  Timestamp,
+} from "firebase/firestore";
+import { db } from "../../config/firebase";
 import AttendanceModal from "../components/AttendanceModal";
-
-const students = [
-  {
-    id: 1,
-    name: "Aashish Panthi",
-    image: require("../../assets/Model.jpg"),
-    Roll: 1,
-  },
-  {
-    id: 2,
-    name: "Roshan Acharya",
-    image: require("../../assets/Model.jpg"),
-    Roll: 2,
-  },
-  {
-    id: 3,
-    name: "Rajesh Khadka",
-    image: require("../../assets/Model.jpg"),
-    Roll: 3,
-  },
-  {
-    id: 4,
-    name: "Roshan Pathak",
-    image: require("../../assets/Model.jpg"),
-    Roll: 4,
-  },
-  {
-    id: 5,
-    name: "Roshan Acharya",
-    image: require("../../assets/Model.jpg"),
-    Roll: 5,
-  },
-  {
-    id: 6,
-    name: "Roshan Acharya",
-    image: require("../../assets/Model.jpg"),
-    Roll: 6,
-  },
-  {
-    id: 7,
-    name: "Roshan Acharya",
-    image: require("../../assets/Model.jpg"),
-    Roll: 7,
-  },
-  {
-    id: 8,
-    name: "Roshan Acharya",
-    image: require("../../assets/Model.jpg"),
-    Roll: 8,
-  },
-  {
-    id: 9,
-    name: "Roshan Acharya",
-    image: require("../../assets/Model.jpg"),
-    Roll: 9,
-  },
-  {
-    id: 10,
-    name: "Roshan Acharya",
-    image: require("../../assets/Model.jpg"),
-    Roll: 10,
-  },
-];
+import { LogBox } from "react-native";
 
 const Attendance = ({ navigation }) => {
-  const [showModal, setShowModal] = useState(false);
-  const studentsId = students.map((student) => student.id);
-  const [presentStudents, setPresentStudents] = useState(studentsId);
+  const [showModal, setShowModal] = useState(false); // control modal visibility
+  const [students, setStudents] = useState([]); // array of student objects
+  const [presentStudents, setPresentStudents] = useState([]); // array of present student ids
 
-  const handleSubmit = () => {
+  const getStudents = async () => {
+    try {
+      // query to fetch only student data
+      const q = query(collection(db, "users"), where("role", "==", "parent"));
+
+      // fetching all the documents
+      const querySnapshot = await getDocs(q);
+
+      // extracting the data from the documents
+      const items = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+
+      // setting the students
+      setStudents(items);
+
+      //get id of all students
+      const ids = items.map((student) => student.id);
+
+      // set the present students
+      setPresentStudents(ids);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = async () => {
+    // make an array of absent student ids
+    const absentStudents = students
+      .map((student) => student.id)
+      .filter((id) => !presentStudents.includes(id));
+
+    // update the attendance in the database
+
+    try {
+      await addDoc(collection(db, "attendance"), {
+        presentStudents,
+        absentStudents,
+        date: Timestamp.fromDate(new Date()),
+      });
+
+      // show success message
+      Alert.alert("Success", "Attendance has been marked");
+    } catch (error) {
+      console.log(error);
+    }
+
+    // redirect to home screen
     navigation.navigate("Teacherhome");
   };
+
+  useEffect(() => {
+    // get the students
+    getStudents();
+    LogBox.ignoreLogs(["Setting a timer"]);
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -115,7 +115,7 @@ const Attendance = ({ navigation }) => {
         presentStudents={presentStudents}
         visible={showModal}
         setShowModal={setShowModal}
-        allStudentsId={studentsId}
+        allStudentsId={students.map((student) => student.id)}
       />
     </SafeAreaView>
   );
