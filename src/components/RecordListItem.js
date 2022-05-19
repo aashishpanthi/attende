@@ -23,7 +23,7 @@ const RecordListItem = ({ student, navigation }) => {
           ]}
         />
         <View style={styles.imageContainer}>
-          <Image resizeMode="contain" source={image} style={styles.image} />
+          <Image source={{ uri: student?.image }} style={styles.image} />
         </View>
         <View>
           <Text style={styles.name}>{name}</Text>
