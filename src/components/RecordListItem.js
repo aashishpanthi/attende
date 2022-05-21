@@ -8,7 +8,9 @@ const RecordListItem = ({ student, navigation }) => {
   const { name, image, roll_no } = student;
 
   const handelClick = () => {
-    navigation.navigate("Studentinfo");
+    navigation.navigate("Studentinfo", {
+      student: student,
+    });
   };
 
   return (
@@ -23,7 +25,7 @@ const RecordListItem = ({ student, navigation }) => {
           ]}
         />
         <View style={styles.imageContainer}>
-          <Image source={{ uri: student?.image }} style={styles.image} />
+          <Image source={{ uri: image }} style={styles.image} />
         </View>
         <View>
           <Text style={styles.name}>{name}</Text>

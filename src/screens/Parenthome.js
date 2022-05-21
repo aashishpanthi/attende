@@ -66,6 +66,7 @@ export default function Parenthome({ navigation }) {
           title="Attendance record"
           navigation={navigation}
           path="Studentinfo"
+          routeParams={{ student }}
         />
         <NavItem
           img={require("../../assets/paper.png")}

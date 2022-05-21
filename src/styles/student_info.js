@@ -1,122 +1,116 @@
 import { StyleSheet } from "react-native";
 import colors from "../../config/colors";
 
-const styles = StyleSheet.create({ 
-    container:{
-        height:'100%'
-    },
-  head:{
-      height:'35%',
-      backgroundColor:colors.green,
-      borderBottomLeftRadius:100,
-      borderBottomRightRadius:100,
-      alignItems:'center'
-      
+const styles = StyleSheet.create({
+  container: {
+    height: "100%",
   },
-  box:{
-      height:'80%',
-      width:'80%',
-      backgroundColor:colors.white,
-      marginTop:'30%',
-      elevation:15,
-      shadowColor:colors.green,
-      shadowOpacity:0.50,
-      borderRadius:15,
-      alignItems:'center'
-      
+  head: {
+    height: "35%",
+    backgroundColor: colors.green,
+    borderBottomLeftRadius: 100,
+    borderBottomRightRadius: 100,
+    alignItems: "center",
   },
-  img:{
-      height:'50%',
-      width:'35%',
-      borderRadius:200,
-      marginTop:'5%'
+  box: {
+    height: "80%",
+    width: "80%",
+    backgroundColor: colors.white,
+    marginTop: "25%",
+    elevation: 10,
+    shadowColor: colors.lightGreen,
+    borderRadius: 15,
+    alignItems: "center",
+    paddingVertical: 20,
   },
-  name:{
-      marginTop:10,
-      fontFamily:'Poppins_500Medium',
-      fontSize:20,      
+  img: {
+    height: 90,
+    width: 90,
+    borderRadius: 50,
   },
-  class:{
-      fontFamily:'Poppins_300Light',
-      fontSize:15,
-      color:colors.blue,
+  name: {
+    marginTop: 10,
+    fontFamily: "Poppins_500Medium",
+    fontSize: 22,
   },
-  contactbox:{
-      alignItems:'center',
-      width:'100%',
-      height:'12%'
+  class: {
+    fontFamily: "Poppins_300Light",
+    fontSize: 15,
+    color: colors.blue,
+    marginTop: -5,
   },
-  contact:{
-      marginTop:'30%',
-      width:'80%',
-      height:'100%',
-      backgroundColor:colors.white,
-      elevation:15,
-      shadowColor:colors.green,
-      shadowOpacity:0.50,
-      borderRadius:10,
-      justifyContent:'center',    
+  contactbox: {
+    alignItems: "center",
+    width: "100%",
+    height: 100,
   },
-  txt:{
-      marginLeft:30,
-      fontSize:15,
-    fontFamily:'Poppins_500Medium',   
+  contact: {
+    marginTop: 90,
+    width: "80%",
+    height: 100,
+    backgroundColor: colors.white,
+    elevation: 10,
+    shadowColor: colors.lightPrimary,
+    borderRadius: 10,
+    justifyContent: "center",
+    paddingHorizontal: 20,
   },
-  attendancebox:{
-      height:220,
-      width:'80%',
-      marginTop:'10%',
-      backgroundColor:colors.white,
-      elevation:15,
-      shadowColor:colors.green,
-      shadowOpacity:0.50,
-      borderRadius:10,
+  contactItem: {
+    alignItems: "center",
+    flexDirection: "row",
+    marginVertical: 2,
   },
-  header:{
-      height:'30%',
-      marginTop:'-6%',
-      borderTopLeftRadius:10,
-      borderTopRightRadius:10,
-      borderBottomWidth:1,
-      borderBottomColor:'black',
-    
+  txt: {
+    fontSize: 16,
+    marginLeft: 10,
+    fontFamily: "Poppins_500Medium",
+    color: colors.lightBlack,
   },
-  headertxt:{
-      fontSize:10,
-      fontFamily:'Poppins_500Medium',
-      fontSize:20,
-      marginTop:'10%',
-      marginLeft:'5%',
-      opacity:0.6,
+  attendancebox: {
+    height: 200,
+    width: "80%",
+    marginTop: 25,
+    backgroundColor: colors.white,
+    elevation: 10,
+    shadowColor: colors.lightPrimary,
+    borderRadius: 10,
+    paddingVertical: 10,
   },
-  infobox:{
-    
-      width:'100%',
-      flexDirection:'row',
-      justifyContent:'space-around',
-      marginTop:'10%',
+  headertxt: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: 22,
+    borderBottomColor: colors.lightPrimary,
+    borderBottomWidth: 1,
+    paddingBottom: 10,
+    paddingHorizontal: 15,
   },
-  databox:{
-      alignItems:'center',
-      backgroundColor:colors.white,
-      height:80,
-      width: 80,
-      borderRadius:10,
-      elevation:2,
-      shadowColor:colors.black,
-      shadowOpacity:0.10,
-      justifyContent:'center'
+  infobox: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 20,
   },
-  infotxt:{
-    fontFamily:'Poppins_500Medium',
-    opacity:0.5,
-    fontSize:15
+  databox: {
+    alignItems: "center",
+    backgroundColor: colors.white,
+    height: 80,
+    width: 80,
+    borderRadius: 10,
+    elevation: 25,
+    shadowColor: colors.lightGreen,
+    justifyContent: "center",
   },
-  datatxt:{
-    fontFamily:'Poppins_500Medium',
-    opacity:0.5,
-    fontSize:20
-  }
+  infotxt: {
+    fontFamily: "Poppins_400Regular",
+    opacity: 0.6,
+    fontSize: 15,
+  },
+  datatxt: {
+    fontFamily: "Poppins_500Medium",
+    opacity: 0.7,
+    fontSize: 25,
+    color: colors.black,
+  },
 });
 
 export default styles;
