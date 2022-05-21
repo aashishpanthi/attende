@@ -2,7 +2,7 @@ import styles from "../styles/take_attendance";
 import { FlatList, SafeAreaView, View } from "react-native";
 import RecordListItem from "../components/RecordListItem";
 import { useEffect, useState } from "react";
-import { collection, where, query, getDocs } from "firebase/firestore";
+import { collection, where, query, getDocs, orderBy } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
 const AttendanceRecord = ({ navigation }) => {
@@ -11,7 +11,11 @@ const AttendanceRecord = ({ navigation }) => {
   const getStudents = async () => {
     try {
       // query to fetch only student data
-      const q = query(collection(db, "users"), where("role", "==", "parent"));
+      const q = query(
+        collection(db, "users"),
+        where("role", "==", "parent"),
+        orderBy("roll_no", "asc")
+      );
 
       // fetching all the documents
       const querySnapshot = await getDocs(q);
@@ -36,15 +40,6 @@ const AttendanceRecord = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <ScrollView>
-        {students.map((student) => (
-          <RecordListItem
-            key={student.id}
-            student={student}
-            
-          />
-        ))}
-      </ScrollView> */}
       <FlatList
         data={students}
         renderItem={({ item }) => {

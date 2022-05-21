@@ -12,6 +12,7 @@ import {
   where,
   addDoc,
   Timestamp,
+  orderBy,
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import AttendanceModal from "../components/AttendanceModal";
@@ -24,7 +25,11 @@ const Attendance = ({ navigation }) => {
   const getStudents = async () => {
     try {
       // query to fetch only student data
-      const q = query(collection(db, "users"), where("role", "==", "parent"));
+      const q = query(
+        collection(db, "users"),
+        where("role", "==", "parent"),
+        orderBy("roll_no", "asc")
+      );
 
       // fetching all the documents
       const querySnapshot = await getDocs(q);
