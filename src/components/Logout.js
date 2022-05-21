@@ -7,7 +7,11 @@ import * as SecureStore from "expo-secure-store";
 const Logout = ({ navigation }) => {
   const logout = async () => {
     await SecureStore.deleteItemAsync("user");
-    navigation.navigate("Welcome");
+    //Reset the stack and navigate to the welcome screen (the first screen)
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Welcome" }],
+    });
   };
   return (
     <TouchableOpacity

@@ -42,9 +42,14 @@ const Login = ({ navigation, role }) => {
         if (userSnap.exists() && userSnap.data().role === role) {
           if (userSnap.data().password === password) {
             save("user", JSON.stringify(userSnap.data()));
-            navigation.navigate(
-              `${role === "parent" ? "Parenthome" : "Teacherhome"}`
-            );
+
+            //Reset the stack and navigate to the home screen
+            navigation.reset({
+              index: 0,
+              routes: [
+                { name: `${role === "parent" ? "Parenthome" : "Teacherhome"}` },
+              ],
+            });
           }
         } else {
           Alert.alert("Invalid credentials", "Invalid username or password", [
