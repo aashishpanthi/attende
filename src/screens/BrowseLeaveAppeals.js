@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { FlatList, LogBox } from "react-native";
 import LeaveAppealItem from "../components/LeaveAppealItem";
 import styles from "../styles/leave_appeal";
 import { collection, onSnapshot, query } from "firebase/firestore";
@@ -24,6 +24,9 @@ const BrowseLeaveAppeals = () => {
 
   useEffect(() => {
     getAppeals();
+
+    // Ignore the warning about the setting a timer
+    LogBox.ignoreLogs(["Setting a timer"]);
   }, []);
 
   return (

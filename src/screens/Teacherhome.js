@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, LogBox } from "react-native";
 import { useState, useEffect } from "react";
 import * as SecureStore from "expo-secure-store";
 import styles from "../styles/home";
@@ -21,6 +21,9 @@ export default function Teacherhome({ navigation }) {
 
   useEffect(() => {
     getToken();
+
+    // Ignore the warning about the setting a timer
+    LogBox.ignoreLogs(["Setting a timer"]);
   });
 
   return (

@@ -1,5 +1,5 @@
 import styles from "../styles/take_attendance";
-import { ScrollView, SafeAreaView, View, Alert } from "react-native";
+import { ScrollView, SafeAreaView, View, Alert, LogBox } from "react-native";
 import StudentBox from "../components/StudentBox";
 import { faAngleDoubleRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 import colors from "../../config/colors";
@@ -15,7 +15,6 @@ import {
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import AttendanceModal from "../components/AttendanceModal";
-import { LogBox } from "react-native";
 
 const Attendance = ({ navigation }) => {
   const [showModal, setShowModal] = useState(false); // control modal visibility
@@ -77,6 +76,8 @@ const Attendance = ({ navigation }) => {
   useEffect(() => {
     // get the students
     getStudents();
+
+    // Ignore the warning about the setting a timer
     LogBox.ignoreLogs(["Setting a timer"]);
   }, []);
 

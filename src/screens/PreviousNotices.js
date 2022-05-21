@@ -1,4 +1,4 @@
-import { FlatList } from "react-native";
+import { FlatList, LogBox } from "react-native";
 import Notice from "../components/Notice";
 import styles from "../styles/previous_notice";
 import { collection, onSnapshot, query } from "firebase/firestore";
@@ -23,6 +23,9 @@ const PreviousNotices = () => {
 
   useEffect(() => {
     getNotices();
+
+    // Ignore the warning about the setting a timer
+    LogBox.ignoreLogs(["Setting a timer"]);
   }, []);
 
   return (
