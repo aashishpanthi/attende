@@ -14,7 +14,8 @@ const AppealLeave = () => {
     try {
       const token = await SecureStore.getItemAsync("user");
       if (token) {
-        setStudentId(JSON.parse(token)._id);
+        console.log(JSON.parse(token));
+        setStudentId(JSON.parse(token).id);
       }
     } catch (err) {
       console.log(err);
@@ -31,6 +32,12 @@ const AppealLeave = () => {
       return;
     }
 
+    console.log({
+      student: studentId,
+      message: text,
+      date: Timestamp.fromDate(new Date()),
+      status: "",
+    });
     try {
       await addDoc(collection(db, "leave_appeals"), {
         student: studentId,

@@ -41,7 +41,9 @@ const Login = ({ navigation, role }) => {
         const userSnap = await getDoc(usersRef);
         if (userSnap.exists() && userSnap.data().role === role) {
           if (userSnap.data().password === password) {
-            save("user", JSON.stringify(userSnap.data()));
+            const id = userSnap.id;
+            const user = userSnap.data();
+            save("user", JSON.stringify({ ...user, id }));
 
             //Reset the stack and navigate to the home screen
             navigation.reset({
