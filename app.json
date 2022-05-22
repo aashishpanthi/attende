@@ -2,7 +2,8 @@
   "expo": {
     "name": "Attende",
     "slug": "attende",
-    "version": "1.0.0",
+    "description": "This is an app developed to replace the traditional pen and paper attendance system with an easily accessible device. It consists of all features involved in traditional register system.",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
